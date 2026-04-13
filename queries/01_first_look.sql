@@ -22,3 +22,17 @@ SELECT
 FROM superstore_sales
 GROUP BY Category
 ORDER BY total_sales DESC;
+-- =============================================
+-- Third query: Sales and profit by region
+-- Goal: See which regions are driving the most money
+-- Reusing GROUP BY + SUM + COUNT (same pattern as query 2, just different columns)
+-- =============================================
+
+SELECT 
+    Region,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    ROUND(SUM(Profit), 2) AS total_profit,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Region
+ORDER BY total_profit DESC;
