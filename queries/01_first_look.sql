@@ -51,3 +51,17 @@ FROM superstore_sales
 GROUP BY Product_Name
 ORDER BY total_profit DESC
 LIMIT 10;
+-- =============================================
+-- Fifth query: Top 5 cities by total sales
+-- Goal: See which cities bring in the most revenue
+-- Reusing the same pattern (GROUP BY + SUM + ORDER BY + LIMIT)
+-- =============================================
+
+SELECT 
+    City,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY City
+ORDER BY total_sales DESC
+LIMIT 5;
