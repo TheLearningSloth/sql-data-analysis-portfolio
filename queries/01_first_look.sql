@@ -65,3 +65,16 @@ FROM superstore_sales
 GROUP BY City
 ORDER BY total_sales DESC
 LIMIT 5;
+-- =============================================
+-- Sixth query: Total sales by customer segment
+-- Goal: See which customer types buy the most
+-- Same pattern again — this repetition is how it starts to feel less foreign
+-- =============================================
+
+SELECT 
+    Segment,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Segment
+ORDER BY total_sales DESC;
