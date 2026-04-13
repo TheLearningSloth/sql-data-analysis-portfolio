@@ -36,3 +36,18 @@ SELECT
 FROM superstore_sales
 GROUP BY Region
 ORDER BY total_profit DESC;
+-- =============================================
+-- Fourth query: Top 10 most profitable products
+-- Goal: See which individual products make the most money
+-- Reusing GROUP BY + SUM + ORDER BY + new LIMIT (same pattern, one small addition)
+-- =============================================
+
+SELECT 
+    Product_Name,
+    ROUND(SUM(Profit), 2) AS total_profit,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Product_Name
+ORDER BY total_profit DESC
+LIMIT 10;
