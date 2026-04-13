@@ -9,3 +9,16 @@
 SELECT *
 FROM superstore_sales
 LIMIT 10;
+-- =============================================
+-- Second query: Total sales by category
+-- Goal: Start doing real analysis — group and sum
+-- This uses GROUP BY and SUM (common in your LinkedIn course)
+-- =============================================
+
+SELECT 
+    Category,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Category
+ORDER BY total_sales DESC;
