@@ -78,3 +78,17 @@ SELECT
 FROM superstore_sales
 GROUP BY Segment
 ORDER BY total_sales DESC;
+-- =============================================
+-- Seventh query: Average discount by category
+-- Goal: See which categories get the most discounting
+-- Same exact pattern — repetition builds familiarity
+-- =============================================
+
+SELECT 
+    Category,
+    ROUND(AVG(Discount) * 100, 2) AS avg_discount_percent,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Category
+ORDER BY avg_discount_percent DESC;
