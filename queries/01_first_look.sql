@@ -304,3 +304,17 @@ SELECT
 FROM superstore_sales
 GROUP BY Region
 ORDER BY profit_margin_percent DESC;
+-- =============================================
+-- Twenty-third query: Orders placed in 2017 only
+-- Goal: Filter by year using WHERE (first time using WHERE before GROUP BY)
+-- Same pattern (GROUP BY + SUM + WHERE) — repetition + simple date filter
+-- =============================================
+
+SELECT 
+    strftime('%Y-%m', "Order Date") AS order_month,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+WHERE strftime('%Y', "Order Date") = '2017'
+GROUP BY order_month
+ORDER BY order_month;
