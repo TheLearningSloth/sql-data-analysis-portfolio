@@ -173,3 +173,17 @@ SELECT
 FROM superstore_sales
 GROUP BY order_month
 ORDER BY order_month;
+-- =============================================
+-- Fourteenth query: Sales by ship mode and region
+-- Goal: See which shipping methods perform best in each region
+-- Same pattern (GROUP BY + SUM + ORDER BY) with two columns this time
+-- =============================================
+
+SELECT 
+    Ship_Mode,
+    Region,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Ship_Mode, Region
+ORDER BY total_sales DESC;
