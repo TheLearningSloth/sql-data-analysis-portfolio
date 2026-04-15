@@ -216,3 +216,18 @@ FROM superstore_sales
 GROUP BY Customer_Name, Customer_ID
 ORDER BY total_sales DESC
 LIMIT 10;
+-- =============================================
+-- Seventeenth query: Top 5 products by quantity sold
+-- Goal: See which products move the most units
+-- Same pattern (GROUP BY + SUM + ORDER BY + LIMIT) — repetition is making this less foreign
+-- =============================================
+
+SELECT 
+    Product_Name,
+    SUM(Quantity) AS total_quantity_sold,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Product_Name
+ORDER BY total_quantity_sold DESC
+LIMIT 5;
