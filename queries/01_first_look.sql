@@ -332,3 +332,17 @@ FROM superstore_sales
 WHERE Segment = 'Consumer'
 GROUP BY Region
 ORDER BY total_sales DESC;
+-- =============================================
+-- Twenty-fifth query: Number of unique customers by region
+-- Goal: Introduce COUNT(DISTINCT) to count unique values (new concept)
+-- Same pattern (GROUP BY + aggregate functions) with DISTINCT
+-- =============================================
+
+SELECT 
+    Region,
+    COUNT(DISTINCT Customer_ID) AS unique_customers,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS total_orders
+FROM superstore_sales
+GROUP BY Region
+ORDER BY unique_customers DESC;
