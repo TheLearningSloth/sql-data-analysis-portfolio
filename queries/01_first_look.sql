@@ -119,3 +119,17 @@ FROM superstore_sales
 GROUP BY State
 ORDER BY total_sales DESC
 LIMIT 5;
+-- =============================================
+-- Tenth query: Total profit by sub-category
+-- Goal: See which product sub-categories are most profitable
+-- Same pattern again (GROUP BY + SUM + ROUND + ORDER BY) — repetition builds real familiarity
+-- =============================================
+
+SELECT 
+    Sub_Category,
+    ROUND(SUM(Profit), 2) AS total_profit,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Sub_Category
+ORDER BY total_profit DESC;
