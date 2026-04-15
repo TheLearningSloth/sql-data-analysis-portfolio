@@ -201,3 +201,18 @@ SELECT
 FROM superstore_sales
 GROUP BY Segment, Category
 ORDER BY total_sales DESC;
+-- =============================================
+-- Sixteenth query: Top 10 customers by total sales
+-- Goal: See which customers bring in the most revenue
+-- Same pattern (GROUP BY + SUM + ORDER BY + LIMIT) — repetition is making this less foreign
+-- =============================================
+
+SELECT 
+    Customer_Name,
+    Customer_ID,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Customer_Name, Customer_ID
+ORDER BY total_sales DESC
+LIMIT 10;
