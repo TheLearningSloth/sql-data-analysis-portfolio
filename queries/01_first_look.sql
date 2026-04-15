@@ -160,3 +160,16 @@ SELECT
 FROM superstore_sales
 GROUP BY order_year
 ORDER BY order_year;
+-- =============================================
+-- Thirteenth query: Monthly sales trend
+-- Goal: See sales by month (basic time series)
+-- Same pattern (GROUP BY + SUM + ORDER BY) with a date function you saw in query 12
+-- =============================================
+
+SELECT 
+    strftime('%Y-%m', "Order Date") AS order_month,   -- extracts year-month from the date column
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY order_month
+ORDER BY order_month;
