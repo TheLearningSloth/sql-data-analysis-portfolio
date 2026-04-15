@@ -105,3 +105,17 @@ SELECT
 FROM superstore_sales
 GROUP BY Ship_Mode
 ORDER BY total_sales DESC;
+-- =============================================
+-- Ninth query: Top 5 states by total sales
+-- Goal: See which states are driving the most revenue
+-- Same pattern again (GROUP BY + SUM + ORDER BY + LIMIT) — this is how familiarity builds
+-- =============================================
+
+SELECT 
+    State,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY State
+ORDER BY total_sales DESC
+LIMIT 5;
