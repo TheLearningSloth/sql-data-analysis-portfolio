@@ -275,3 +275,18 @@ FROM superstore_sales
 GROUP BY Customer_Name, Customer_ID
 HAVING total_orders > 10
 ORDER BY total_orders DESC;
+-- =============================================
+-- Twenty-first query: High-value orders (sales over $1000)
+-- Goal: Find big individual orders using HAVING (new filtering after grouping)
+-- Same pattern (GROUP BY + SUM + HAVING) — repetition + one new filter
+-- =============================================
+
+SELECT 
+    Order_ID,
+    Customer_Name,
+    ROUND(SUM(Sales), 2) AS order_total,
+    COUNT(*) AS items_in_order
+FROM superstore_sales
+GROUP BY Order_ID, Customer_Name
+HAVING order_total > 1000
+ORDER BY order_total DESC;
