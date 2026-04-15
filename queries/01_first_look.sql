@@ -231,3 +231,18 @@ FROM superstore_sales
 GROUP BY Product_Name
 ORDER BY total_quantity_sold DESC
 LIMIT 5;
+-- =============================================
+-- Eighteenth query: Categories with profit margin above 20%
+-- Goal: Use HAVING clause to filter groups (new concept — first time we're filtering after grouping)
+-- Same base pattern (GROUP BY + SUM + ROUND) + HAVING
+-- =============================================
+
+SELECT 
+    Category,
+    ROUND(SUM(Profit), 2) AS total_profit,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    ROUND((SUM(Profit) / SUM(Sales)) * 100, 2) AS profit_margin_percent
+FROM superstore_sales
+GROUP BY Category
+HAVING profit_margin_percent > 20
+ORDER BY profit_margin_percent DESC;
