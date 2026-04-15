@@ -318,3 +318,17 @@ FROM superstore_sales
 WHERE strftime('%Y', "Order Date") = '2017'
 GROUP BY order_month
 ORDER BY order_month;
+-- =============================================
+-- Twenty-fourth query: Consumer segment sales by region
+-- Goal: Filter rows first with WHERE, then aggregate (new combo: WHERE + GROUP BY)
+-- Same pattern (GROUP BY + SUM + ORDER BY) with a simple filter
+-- =============================================
+
+SELECT 
+    Region,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+WHERE Segment = 'Consumer'
+GROUP BY Region
+ORDER BY total_sales DESC;
