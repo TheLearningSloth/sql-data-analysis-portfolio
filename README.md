@@ -4,33 +4,32 @@
 
 ### About This Project
 This repository is my personal learning space.  
-I am slowly creating and documenting SQL queries to practice data analysis concepts I learned in the course.  
-No fancy dashboards yet — just clean, commented `.sql` files that show my thinking process.
+I slowly created and organized 25 SQL queries on the Superstore Sales dataset.  
+Everything is now split into clean, focused files so it's easy to see my progress.
 
-### Goals
-- Get extremely comfortable writing and reading SQL
-- Build a collection of queries I can explain in interviews or on LinkedIn
-- Document every step so I (and others) can see real progress
+### Organized Query Files
+- **`01_basic_exploration.sql`** – Basic SELECT and first look at the data  
+- **`02_aggregations.sql`** – GROUP BY, SUM, AVG, COUNT, etc.  
+- **`03_time_analysis.sql`** – Date functions, yearly and monthly trends  
+- **`04_advanced_filters.sql`** – HAVING, WHERE + GROUP BY, COUNT(DISTINCT), profit margins  
 
-### What’s Inside (so far)
-- This README
-- (COMING SOON) Individual `.sql` files with queries + explanations
+(Original `01_first_look.sql` is kept as a backup with all 25 queries together.)
 
-### How to Explore
-1. Browse the files in the **Code** tab
-2. Each `.sql` file will contain:
-   - The business question
-   - The full query
-   - Comments explaining what I did and why
+### Skills Demonstrated
+- SELECT, LIMIT, ORDER BY  
+- GROUP BY + aggregate functions (SUM, AVG, COUNT, COUNT(DISTINCT))  
+- Date functions (strftime for year/month)  
+- Filtering with WHERE and HAVING  
+- Calculated columns (profit margin, average order value)  
+- Top-N analysis  
 
-### Next Steps (I’m adding these slowly)
-- Choose a simple dataset
-- Write my first real query
-- Add more queries over time
+### Next Steps (Phase 3 coming soon)
+- Add a second dataset and practice JOINs  
+- Add more advanced queries (subqueries, window functions)  
 
 ---
 
-**Status**: Early learning project — started April 2026  
-**Last updated**: TBD
+**Status**: Phase 2 complete — queries organized (April 2026)  
+**Last updated**: April 15, 2026  
 
 Made with patience by TheLearningSloth 🦥 AKA Tina
