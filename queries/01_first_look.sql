@@ -246,3 +246,17 @@ FROM superstore_sales
 GROUP BY Category
 HAVING profit_margin_percent > 20
 ORDER BY profit_margin_percent DESC;
+-- =============================================
+-- Nineteenth query: Average order value by segment
+-- Goal: See which customer segments have the highest average sales per order
+-- New aggregate: AVG (first time) — same GROUP BY pattern otherwise
+-- =============================================
+
+SELECT 
+    Segment,
+    ROUND(AVG(Sales), 2) AS avg_order_value,
+    COUNT(*) AS number_of_orders,
+    ROUND(SUM(Sales), 2) AS total_sales
+FROM superstore_sales
+GROUP BY Segment
+ORDER BY avg_order_value DESC;
