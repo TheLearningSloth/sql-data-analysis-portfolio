@@ -92,3 +92,16 @@ SELECT
 FROM superstore_sales
 GROUP BY Category
 ORDER BY avg_discount_percent DESC;
+-- =============================================
+-- Eighth query: Total sales by ship mode
+-- Goal: See which shipping methods are used the most
+-- Same exact pattern (GROUP BY + SUM + ORDER BY) — repetition is building familiarity
+-- =============================================
+
+SELECT 
+    Ship_Mode,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Ship_Mode
+ORDER BY total_sales DESC;
