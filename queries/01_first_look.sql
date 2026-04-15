@@ -260,3 +260,18 @@ SELECT
 FROM superstore_sales
 GROUP BY Segment
 ORDER BY avg_order_value DESC;
+-- =============================================
+-- Twentieth query: Customers who placed more than 10 orders
+-- Goal: Use HAVING to filter customers with high order volume (new concept)
+-- Same pattern (GROUP BY + COUNT + HAVING) — repetition + filtering groups
+-- =============================================
+
+SELECT 
+    Customer_Name,
+    Customer_ID,
+    COUNT(*) AS total_orders,
+    ROUND(SUM(Sales), 2) AS total_spent
+FROM superstore_sales
+GROUP BY Customer_Name, Customer_ID
+HAVING total_orders > 10
+ORDER BY total_orders DESC;
