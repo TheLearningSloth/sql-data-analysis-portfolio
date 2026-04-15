@@ -147,3 +147,16 @@ SELECT
 FROM superstore_sales
 GROUP BY Category
 ORDER BY total_quantity_sold DESC;
+-- =============================================
+-- Twelfth query: Orders by order date year
+-- Goal: See sales trends by year (basic time analysis)
+-- Same pattern (GROUP BY + SUM + ORDER BY) — repetition builds familiarity
+-- =============================================
+
+SELECT 
+    strftime('%Y', "Order Date") AS order_year,   -- extracts just the year from the date column
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY order_year
+ORDER BY order_year;
