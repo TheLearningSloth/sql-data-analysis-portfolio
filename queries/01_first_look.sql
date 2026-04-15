@@ -187,3 +187,17 @@ SELECT
 FROM superstore_sales
 GROUP BY Ship_Mode, Region
 ORDER BY total_sales DESC;
+-- =============================================
+-- Fifteenth query: Sales by segment and category
+-- Goal: See which customer segments buy which categories the most
+-- Same pattern (GROUP BY two columns + SUM + ORDER BY) — repetition is building familiarity
+-- =============================================
+
+SELECT 
+    Segment,
+    Category,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Segment, Category
+ORDER BY total_sales DESC;
