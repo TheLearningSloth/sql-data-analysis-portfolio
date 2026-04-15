@@ -133,3 +133,17 @@ SELECT
 FROM superstore_sales
 GROUP BY Sub_Category
 ORDER BY total_profit DESC;
+-- =============================================
+-- Eleventh query: Total quantity sold by category
+-- Goal: See which categories have the highest volume
+-- Same pattern again (GROUP BY + SUM + ORDER BY) — repetition is the key
+-- =============================================
+
+SELECT 
+    Category,
+    SUM(Quantity) AS total_quantity_sold,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    COUNT(*) AS number_of_orders
+FROM superstore_sales
+GROUP BY Category
+ORDER BY total_quantity_sold DESC;
