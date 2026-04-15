@@ -290,3 +290,17 @@ FROM superstore_sales
 GROUP BY Order_ID, Customer_Name
 HAVING order_total > 1000
 ORDER BY order_total DESC;
+-- =============================================
+-- Twenty-second query: Profit margin by region
+-- Goal: Calculate profit margin percentage per region
+-- Same pattern (GROUP BY + SUM + calculated column) — repetition + simple math
+-- =============================================
+
+SELECT 
+    Region,
+    ROUND(SUM(Profit), 2) AS total_profit,
+    ROUND(SUM(Sales), 2) AS total_sales,
+    ROUND((SUM(Profit) / SUM(Sales)) * 100, 2) AS profit_margin_percent
+FROM superstore_sales
+GROUP BY Region
+ORDER BY profit_margin_percent DESC;
