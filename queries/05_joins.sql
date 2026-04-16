@@ -156,3 +156,20 @@ LEFT JOIN superstore_returns r
     ON s."Order ID" = r."Order ID"
 GROUP BY s.Category, s.Sub_Category
 ORDER BY return_rate_percent DESC;
+-- =============================================
+-- Tenth JOIN query: Total returned sales value by region
+-- Goal: See the dollar value of returned sales per region
+-- Simple aggregation on the joined data
+-- =============================================
+
+SELECT 
+    r.Region AS return_region,
+    COUNT(*) AS number_of_returns,
+    ROUND(SUM(s.Sales), 2) AS total_returned_sales_value,
+    ROUND(SUM(s.Profit), 2) AS total_profit_lost
+FROM superstore_sales s
+LEFT JOIN superstore_returns r 
+    ON s."Order ID" = r."Order ID"
+WHERE r.Returned = 'Yes'
+GROUP BY r.Region
+ORDER BY total_returned_sales_value DESC;
