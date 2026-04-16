@@ -34,3 +34,19 @@ LEFT JOIN superstore_returns r
 WHERE r.Returned = 'Yes'
 GROUP BY s.Category
 ORDER BY number_of_returns DESC;
+-- =============================================
+-- Third JOIN query: Returns by region
+-- Goal: See which regions have the most returns
+-- Same LEFT JOIN pattern, just grouping on the returns table this time
+-- =============================================
+
+SELECT 
+    r.Region AS return_region,
+    COUNT(*) AS number_of_returns,
+    ROUND(SUM(s.Sales), 2) AS total_returned_sales
+FROM superstore_sales s
+LEFT JOIN superstore_returns r 
+    ON s."Order ID" = r."Order ID"
+WHERE r.Returned = 'Yes'
+GROUP BY r.Region
+ORDER BY number_of_returns DESC;
