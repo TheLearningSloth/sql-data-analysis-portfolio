@@ -105,3 +105,21 @@ LEFT JOIN superstore_returns r
 WHERE r.Returned = 'Yes'
 ORDER BY s.Sales DESC
 LIMIT 20;
+-- =============================================
+-- Seventh JOIN query: Most frequently returned products
+-- Goal: See which individual products get returned the most
+-- Same LEFT JOIN pattern with GROUP BY on product level
+-- =============================================
+
+SELECT 
+    s.Product_Name,
+    s.Category,
+    COUNT(*) AS number_of_returns,
+    ROUND(SUM(s.Sales), 2) AS total_returned_sales
+FROM superstore_sales s
+LEFT JOIN superstore_returns r 
+    ON s."Order ID" = r."Order ID"
+WHERE r.Returned = 'Yes'
+GROUP BY s.Product_Name, s.Category
+ORDER BY number_of_returns DESC
+LIMIT 10;
