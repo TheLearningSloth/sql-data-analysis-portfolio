@@ -67,3 +67,19 @@ LEFT JOIN superstore_returns r
 WHERE r.Returned = 'Yes'
 GROUP BY s.Category
 ORDER BY total_profit_lost_on_returns ASC;
+-- =============================================
+-- Fifth JOIN query: Return rate by category
+-- Goal: Calculate what % of sales in each category were returned
+-- New concept: Using COUNT + CASE to calculate return rate (slightly more advanced)
+-- =============================================
+
+SELECT 
+    s.Category,
+    COUNT(*) AS total_orders_in_category,
+    SUM(CASE WHEN r.Returned = 'Yes' THEN 1 ELSE 0 END) AS number_of_returns,
+    ROUND(100.0 * SUM(CASE WHEN r.Returned = 'Yes' THEN 1 ELSE 0 END) / COUNT(*), 2) AS return_rate_percent
+FROM superstore_sales s
+LEFT JOIN superstore_returns r 
+    ON s."Order ID" = r."Order ID"
+GROUP BY s.Category
+ORDER BY return_rate_percent DESC;
