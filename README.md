@@ -6,6 +6,7 @@
 This repository is my personal learning playground.  
 I started with zero local SQL setup and slowly built 25+ queries on the Superstore Sales dataset and then added a second dataset (Returns) to practice JOINs.  
 Everything is now organized into clean, focused `.sql` files so anyone (including future recruiters) can easily see my thinking process.
+<img width="1150" height="656" alt="Screenshot 2026-04-16 at 8 48 24 AM" src="https://github.com/user-attachments/assets/db5d2298-5c44-4998-878e-d13f5bc350d9" />
 
 ### Organized Query Files
 - **`01_basic_exploration.sql`** – Basic SELECT and first look at the data  
@@ -13,6 +14,7 @@ Everything is now organized into clean, focused `.sql` files so anyone (includin
 - **`03_time_analysis.sql`** – Date functions, yearly and monthly trends  
 - **`04_advanced_filters.sql`** – HAVING, WHERE + GROUP BY, COUNT(DISTINCT), calculated columns  
 - **`05_joins.sql`** – LEFT JOINs with the Returns dataset (9 real JOIN queries)
+<img width="970" height="624" alt="Screenshot 2026-04-16 at 8 50 11 AM" src="https://github.com/user-attachments/assets/73e12ed4-4b9f-45d0-9294-08ad95580864" />
 
 ### Skills Demonstrated
 - SELECT, LIMIT, ORDER BY  
