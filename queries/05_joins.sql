@@ -50,3 +50,20 @@ LEFT JOIN superstore_returns r
 WHERE r.Returned = 'Yes'
 GROUP BY r.Region
 ORDER BY number_of_returns DESC;
+-- =============================================
+-- Fourth JOIN query: Profit on returned orders by category
+-- Goal: See how much profit was lost on returned items by category
+-- Same LEFT JOIN pattern, adding Profit column and aggregation
+-- =============================================
+
+SELECT 
+    s.Category,
+    COUNT(*) AS number_of_returns,
+    ROUND(SUM(s.Profit), 2) AS total_profit_lost_on_returns,
+    ROUND(SUM(s.Sales), 2) AS total_returned_sales
+FROM superstore_sales s
+LEFT JOIN superstore_returns r 
+    ON s."Order ID" = r."Order ID"
+WHERE r.Returned = 'Yes'
+GROUP BY s.Category
+ORDER BY total_profit_lost_on_returns ASC;
