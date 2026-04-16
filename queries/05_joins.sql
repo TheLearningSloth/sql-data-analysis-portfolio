@@ -18,3 +18,19 @@ LEFT JOIN superstore_returns r
     ON s."Order ID" = r."Order ID"
 WHERE r.Returned = 'Yes'
 LIMIT 10;
+-- =============================================
+-- Second JOIN query: Returned orders by category
+-- Goal: See which categories have the most returns
+-- Same LEFT JOIN pattern, just adding GROUP BY and aggregation
+-- =============================================
+
+SELECT 
+    s.Category,
+    COUNT(*) AS number_of_returns,
+    ROUND(SUM(s.Sales), 2) AS total_returned_sales
+FROM superstore_sales s
+LEFT JOIN superstore_returns r 
+    ON s."Order ID" = r."Order ID"
+WHERE r.Returned = 'Yes'
+GROUP BY s.Category
+ORDER BY number_of_returns DESC;
