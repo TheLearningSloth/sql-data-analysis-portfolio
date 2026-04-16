@@ -139,3 +139,20 @@ LEFT JOIN superstore_returns r
     ON s."Order ID" = r."Order ID"
 GROUP BY s.Ship_Mode
 ORDER BY return_rate_percent DESC;
+-- =============================================
+-- Ninth JOIN query: Return rate by product sub-category
+-- Goal: Drill down to see which specific sub-categories have high return rates
+-- Same LEFT JOIN + CASE pattern, just more granular grouping
+-- =============================================
+
+SELECT 
+    s.Category,
+    s.Sub_Category,
+    COUNT(*) AS total_orders,
+    SUM(CASE WHEN r.Returned = 'Yes' THEN 1 ELSE 0 END) AS number_of_returns,
+    ROUND(100.0 * SUM(CASE WHEN r.Returned = 'Yes' THEN 1 ELSE 0 END) / COUNT(*), 2) AS return_rate_percent
+FROM superstore_sales s
+LEFT JOIN superstore_returns r 
+    ON s."Order ID" = r."Order ID"
+GROUP BY s.Category, s.Sub_Category
+ORDER BY return_rate_percent DESC;
