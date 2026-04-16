@@ -123,3 +123,19 @@ WHERE r.Returned = 'Yes'
 GROUP BY s.Product_Name, s.Category
 ORDER BY number_of_returns DESC
 LIMIT 10;
+-- =============================================
+-- Eighth JOIN query: Return rate by ship mode
+-- Goal: See which shipping methods have the highest return rate
+-- Same LEFT JOIN + CASE pattern as the fifth query, just different grouping
+-- =============================================
+
+SELECT 
+    s.Ship_Mode,
+    COUNT(*) AS total_orders,
+    SUM(CASE WHEN r.Returned = 'Yes' THEN 1 ELSE 0 END) AS number_of_returns,
+    ROUND(100.0 * SUM(CASE WHEN r.Returned = 'Yes' THEN 1 ELSE 0 END) / COUNT(*), 2) AS return_rate_percent
+FROM superstore_sales s
+LEFT JOIN superstore_returns r 
+    ON s."Order ID" = r."Order ID"
+GROUP BY s.Ship_Mode
+ORDER BY return_rate_percent DESC;
