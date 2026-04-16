@@ -83,3 +83,25 @@ LEFT JOIN superstore_returns r
     ON s."Order ID" = r."Order ID"
 GROUP BY s.Category
 ORDER BY return_rate_percent DESC;
+-- =============================================
+-- Sixth JOIN query: Returned orders with full customer and product details
+-- Goal: See detailed info on returned orders (combining more columns)
+-- Same LEFT JOIN pattern, just selecting more fields for readability
+-- =============================================
+
+SELECT 
+    s."Order ID",
+    s."Customer Name",
+    s.Category,
+    s.Sub_Category,
+    s.Product_Name,
+    ROUND(s.Sales, 2) AS sales_amount,
+    ROUND(s.Profit, 2) AS profit_amount,
+    r.Returned,
+    r.Region AS return_region
+FROM superstore_sales s
+LEFT JOIN superstore_returns r 
+    ON s."Order ID" = r."Order ID"
+WHERE r.Returned = 'Yes'
+ORDER BY s.Sales DESC
+LIMIT 20;
