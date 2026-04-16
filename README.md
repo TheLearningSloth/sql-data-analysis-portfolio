@@ -3,7 +3,7 @@
 **Building my SQL skills one query at a time** — starting from the LinkedIn “SQL for Data Analysis” course.
 
 ### About This Project
-This repository is my personal learning project.  
+This repository is my personal learning playground.  
 I started with zero local SQL setup and slowly built 25+ queries on the Superstore Sales dataset and then added a second dataset (Returns) to practice JOINs.  
 Everything is now organized into clean, focused `.sql` files so anyone (including future recruiters) can easily see my thinking process.
 
